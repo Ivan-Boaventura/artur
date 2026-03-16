@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday, Artur! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:    #0D0D0D;
+      --paper:  #F5F0E8;
+      --warm:   #E8DFD0;
+      --gold:   #C9A84C;
+      --rust:   #C94C2E;
+      --sage:   #5C6B4A;
+      --slate:  #3A3D4A;
+      --cream:  #FAF7F2;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Custom Cursor ── */
+    #cur {
+      width: 12px; height: 12px;
+      background: var(--rust);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform .08s, width .2s, height .2s, background .2s;
+      mix-blend-mode: multiply;
+    }
+    #cur-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: transform .18s ease, width .2s, height .2s;
+    }
+    body:hover #cur { width: 14px; height: 14px; }
+
+    /* ── Grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      border-bottom: 2px solid var(--ink);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0;
+      background: var(--paper);
+      z-index: 100;
+    }
+    .masthead-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+    .masthead-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: .2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .masthead-issue {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: .15em;
+      color: var(--slate);
+      opacity: .6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 95vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .hero-left {
+      padding: 80px 48px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 2px solid var(--ink);
+      position: relative;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeIn 1s ease both;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--rust);
+    }
+
+    .hero-headline {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 0;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--slate);
+      opacity: .5;
+      margin-bottom: 20px;
+      animation: fadeIn 1s .1s ease both;
+    }
+
+    .hero-big {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(5rem, 10vw, 9.5rem);
+      line-height: .92;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+      animation: slideUp 1s .2s cubic-bezier(.16,1,.3,1) both;
+    }
+    .hero-big .accent { color: var(--rust); display: block; }
+    .hero-big .outline {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+      display: block;
+    }
+
+    .hero-sub {
+      margin-top: 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--slate);
+      line-height: 1.5;
+      max-width: 380px;
+      animation: fadeIn 1s .5s ease both;
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      animation: fadeIn 1s .7s ease both;
+    }
+
+    
+    .hero-name-small {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .hero-name-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .hero-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 7rem;
+      line-height: 1;
+      -webkit-text-stroke: 2px var(--gold);
+      color: transparent;
+      opacity: .3;
+    }
+
+    /* Hero right — featured photo */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--warm);
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: sepia(8%) contrast(1.05);
+      transition: transform 8s ease;
+    }
+    .hero-right:hover img { transform: scale(1.04); }
+    .hero-right-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,.35) 0%, transparent 50%);
+    }
+    .hero-right-caption {
+      position: absolute;
+      bottom: 28px; left: 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--paper);
+      opacity: .8;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      border-bottom: 2px solid var(--ink);
+      overflow: hidden;
+      padding: 14px 0;
+      background: var(--ink);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--paper);
+      padding: 0 28px;
+      flex-shrink: 0;
+    }
+    .marquee-item.gold { color: var(--gold); }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── EDITORIAL GRID ── */
+    .editorial {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      border-bottom: 2px solid var(--ink);
+    }
+    .editorial-main {
+      padding: 64px 48px;
+      border-right: 2px solid var(--ink);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .3em;
+      color: var(--rust);
+    }
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--ink);
+    }
+    .section-line {
+      flex: 1; height: 1px;
+      background: var(--ink);
+      opacity: .15;
+    }
+
+    .quote-block {
+      border-left: 4px solid var(--gold);
+      padding: 24px 32px;
+      background: var(--warm);
+      margin-bottom: 32px;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .quote-attribution {
+      margin-top: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .body-copy {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: var(--slate);
+      columns: 2;
+      column-gap: 32px;
+    }
+    .body-copy strong { color: var(--rust); font-weight: 600; }
+    .body-copy .dropcap {
+      float: left;
+      font-family: 'Anton', sans-serif;
+      font-size: 4.5rem;
+      line-height: .8;
+      margin: 4px 10px 0 0;
+      color: var(--ink);
+    }
+
+    .editorial-sidebar {
+      padding: 64px 36px;
+      background: var(--warm);
+    }
+    .sidebar-stat {
+      margin-bottom: 48px;
+    }
+    .stat-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 4.5rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+    .stat-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem;
+      color: var(--slate);
+      margin-top: 6px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .sidebar-divider {
+      height: 1px;
+      background: var(--ink);
+      opacity: .12;
+      margin-bottom: 48px;
+    }
+
+    /* ── WISHES STRIP ── */
+    .wishes-strip {
+      display: flex;
+      border-bottom: 2px solid var(--ink);
+      overflow: hidden;
+    }
+    .wish-item {
+      flex: 1;
+      padding: 36px 28px;
+      border-right: 1px solid rgba(13,13,13,.15);
+      transition: background .25s;
+      cursor: default;
+    }
+    .wish-item:last-child { border-right: none; }
+    .wish-item:hover { background: var(--ink); }
+    .wish-item:hover .wish-icon,
+    .wish-item:hover .wish-title,
+    .wish-item:hover .wish-text { color: var(--paper); }
+    .wish-icon { font-size: 1.5rem; margin-bottom: 12px; display: block; transition: color .25s; }
+    .wish-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ink);
+      transition: color .25s;
+      margin-bottom: 6px;
+    }
+    .wish-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: .9rem;
+      color: var(--slate);
+      line-height: 1.5;
+      transition: color .25s;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section {
+      padding: 72px 48px 80px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 300px;
+      gap: 3px;
+      margin-top: 40px;
+    }
+
+    /* Special sizing for some cards */
+    .gallery-grid .g-tall { grid-row: span 2; }
+    .gallery-grid .g-wide { grid-column: span 2; }
+
+    .g-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--warm);
+      cursor: pointer;
+    }
+    .g-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: sepia(5%) contrast(1.03);
+      transition: transform .6s cubic-bezier(.16,1,.3,1), filter .4s;
+    }
+    .g-card:hover img {
+      transform: scale(1.07);
+      filter: sepia(0%) contrast(1.06);
+    }
+    .g-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,.5) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .g-card:hover .g-card-overlay { opacity: 1; }
+    .g-card-num {
+      position: absolute;
+      top: 12px; left: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .2em;
+      color: var(--paper);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .g-card:hover .g-card-num { opacity: .7; }
+
+    /* ── CLOSING ── */
+    .closing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2px solid var(--ink);
+    }
+    .closing-left {
+      padding: 80px 48px;
+      border-right: 2px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .closing-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 6vw, 6rem);
+      text-transform: uppercase;
+      line-height: .95;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    .closing-headline span {
+      display: block;
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+    .closing-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--slate);
+      max-width: 420px;
+    }
+    .closing-msg strong { color: var(--rust); font-style: normal; font-weight: 600; }
+
+    .closing-right {
+      background: var(--ink);
+      padding: 80px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+    }
+    .closing-big-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 10rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: .25;
+      position: absolute;
+    }
+    .closing-wishes {
+      position: relative;
+    }
+    .closing-wish-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--paper);
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(245,240,232,.1);
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .closing-wish-line:first-child { border-top: 1px solid rgba(245,240,232,.1); }
+    .closing-wish-line .arrow {
+      font-size: .8rem;
+      color: var(--gold);
+      transition: transform .2s;
+    }
+    .closing-wish-line:hover .arrow { transform: translateX(6px); }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--slate);
+      opacity: .5;
+    }
+    .footer-center {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .5;
+    }
+    .footer-right {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--slate);
+      opacity: .5;
+    }
+
+    /* ── Special Photo Section ── */
+    .special-section {
+      border-bottom: 2px solid var(--ink);
+      padding: 100px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .special-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .special-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .special-tag::before, .special-tag::after {
+      content: '';
+      display: block;
+      width: 48px; height: 1px;
+      background: var(--gold);
+      opacity: .4;
+    }
+    .special-frame {
+      position: relative;
+      width: min(480px, 90vw);
+      margin-bottom: 56px;
+    }
+    .special-frame::before {
+      content: '';
+      position: absolute;
+      top: -10px; left: -10px;
+      width: 36px; height: 36px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+      z-index: 2;
+    }
+    .special-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -10px; right: -10px;
+      width: 36px; height: 36px;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+      z-index: 2;
+    }
+    .special-frame .corner-tr {
+      position: absolute;
+      top: -10px; right: -10px;
+      width: 36px; height: 36px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+      z-index: 2;
+    }
+    .special-frame .corner-bl {
+      position: absolute;
+      bottom: -10px; left: -10px;
+      width: 36px; height: 36px;
+      border-bottom: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+      z-index: 2;
+    }
+    .special-frame img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      filter: sepia(6%) contrast(1.04);
+      transition: filter .4s;
+    }
+    .special-frame:hover img { filter: sepia(0%) contrast(1.06); }
+    .special-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--paper);
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+    .special-headline .gold-word { color: var(--gold); }
+    .special-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.9;
+      color: rgba(245,240,232,.65);
+      max-width: 620px;
+    }
+    .special-msg strong {
+      color: var(--paper);
+      font-style: normal;
+      font-weight: 600;
+    }
+    .special-divider {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      opacity: .4;
+      margin: 36px auto 0;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeIn  { from { opacity:0 } to { opacity:1 } }
+    @keyframes slideUp { from { opacity:0; transform:translateY(40px) } to { opacity:1; transform:translateY(0) } }
+
+    .reveal { opacity:0; transform:translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 50vw; border-right: none; }
+      .hero-left { border-right: none; padding: 48px 24px; }
+      .editorial { grid-template-columns: 1fr; }
+      .editorial-main { border-right: none; padding: 48px 24px; }
+      .body-copy { columns: 1; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+      .gallery-grid .g-tall, .gallery-grid .g-wide { grid-column: span 1; grid-row: span 1; }
+      .wishes-strip { flex-wrap: wrap; }
+      .wish-item { flex: 1 1 45%; border-bottom: 1px solid rgba(13,13,13,.1); }
+      .closing { grid-template-columns: 1fr; }
+      .closing-left, .closing-right { padding: 48px 24px; }
+      .masthead { padding: 14px 20px; }
+      .gallery-section { padding: 48px 20px 60px; }
+      .footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <span class="masthead-logo">Birthday Edition</span>
+    <span class="masthead-date">16 de Março · 2026</span>
+    <span class="masthead-issue">Vol. I — Nº 01</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Edição Especial de Aniversário</div>
+
+      <div class="hero-headline">
+        <div class="hero-label">// Hoje celebramos //</div>
+        <h1 class="hero-big">
+          <span>Happy</span>
+          <span class="accent">Birth</span>
+          <span class="outline">Day</span>
+        </h1>
+        <p class="hero-sub">
+          Um homem definido pelo seu carácter,<br>
+          pela sua força e pelo seu sorriso inconfundível.
+        </p>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="hero-name-block">
+          <div class="hero-name-small">// O homenageado //</div>
+          <div class="hero-name-big">Artur Fernando<br>Mabjeca</div>
+        </div>
+        <div class="hero-number">16</div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img src="fotos/IMG-20260316-WA0031.jpg" alt="Artur Fernando Mabjeca" id="hero-img"/>
+      <div class="hero-right-overlay"></div>
+      <div class="hero-right-caption">© Arquivo Pessoal · 2026</div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee-track">
+      <span class="marquee-item">Feliz Aniversário</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Happy Birthday</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Artur Fernando Mabjeca</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">16 de Março</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Que seja incrível</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Feliz Aniversário</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Happy Birthday</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Artur Fernando Mabjeca</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">16 de Março</span>
+      <span class="marquee-item gold">✦</span>
+      <span class="marquee-item">Que seja incrível</span>
+      <span class="marquee-item gold">✦</span>
+    </div>
+  </div>
+
+  <!-- EDITORIAL -->
+  <section class="editorial reveal">
+    <div class="editorial-main">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">O Homem</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">
+          "A grandeza de um homem não se mede pelo que tem,
+          mas pela forma como ilumina a vida de quem o rodeia."
+        </p>
+        <p class="quote-attribution">— Uma homenagem sentida, 2026</p>
+      </div>
+
+      <div class="body-copy">
+        <p>
+          <span class="dropcap">H</span>á pessoas que entram na nossa vida e deixam uma marca indelével —
+          não pelo barulho que fazem, mas pelo impacto silencioso e genuíno que têm em tudo o que tocam.
+          <strong>Artur</strong> é exactamente essa pessoa.
+        </p>
+        <p>
+          Com uma dedicação que inspira, um carácter que confia e uma energia que contagia,
+          o Artur representa o melhor de quem somos como comunidade, como família, como amigos.
+          Hoje, neste dia que é seu, toda a gente que o conhece tem um motivo para sorrir.
+        </p>
+        <p>
+          Que este novo capítulo da tua vida seja escrito com <strong>audácia</strong>,
+          preenchido com conquistas que te surpreendam e vivido com a intensidade
+          que só tu sabes dar a cada momento. O mundo precisa de mais pessoas como tu.
+        </p>
+      </div>
+    </div>
+
+    <div class="editorial-sidebar">
+      <div class="sidebar-stat">
+        <div class="stat-num">01</div>
+        <div class="stat-label">// Data especial //</div>
+        <div class="stat-desc">16 de Março — o dia em que o mundo ganhou alguém extraordinário.</div>
+      </div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">// Razões para celebrar //</div>
+        <div class="stat-desc">Cada dia ao lado do Artur é um motivo de celebração em si mesmo.</div>
+      </div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-stat">
+        <div class="stat-num">100</div>
+        <div class="stat-label">// % Dedicação //</div>
+        <div class="stat-desc">Em tudo o que faz, vai sempre até ao fim com determinação total.</div>
+      </div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-stat">
+        <div class="stat-num">+1</div>
+        <div class="stat-label">// Mais um ano de glória //</div>
+        <div class="stat-desc">Que cada ano que passa traga ainda mais histórias para contar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WISHES STRIP -->
+  <div class="wishes-strip reveal">
+    <div class="wish-item">
+      <span class="wish-icon">⚡</span>
+      <div class="wish-title">Energia</div>
+      <p class="wish-text">Que nunca te falte força para perseguir os teus sonhos.</p>
+    </div>
+    <div class="wish-item">
+      <span class="wish-icon">🏆</span>
+      <div class="wish-title">Vitórias</div>
+      <p class="wish-text">Que este ano seja repleto de conquistas que te orgulhem.</p>
+    </div>
+    <div class="wish-item">
+      <span class="wish-icon">🌍</span>
+      <div class="wish-title">Horizonte</div>
+      <p class="wish-text">Que o mundo se abra à tua frente com novas oportunidades.</p>
+    </div>
+    <div class="wish-item">
+      <span class="wish-icon">💎</span>
+      <div class="wish-title">Prosperidade</div>
+      <p class="wish-text">Saúde, paz e abundância em cada canto da tua vida.</p>
+    </div>
+    <div class="wish-item">
+      <span class="wish-icon">🔥</span>
+      <div class="wish-title">Paixão</div>
+      <p class="wish-text">Que continues sempre apaixonado pela vida e por tudo o que fazes.</p>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="gallery-section reveal">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Galeria</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Preenchido pelo JS -->
+    </div>
+  </section>
+
+  <!-- SPECIAL PHOTO -->
+  <section class="special-section reveal">
+    <div class="special-tag">Momento Especial</div>
+
+    <div class="special-frame">
+      <div class="corner-tr"></div>
+      <div class="corner-bl"></div>
+      <img src="fotos/IMG-20260316-WA0028.jpg" alt="Momento especial — Artur Fernando Mabjeca"/>
+    </div>
+
+    <h2 class="special-headline">
+      O Amor <span class="gold-word">Guia</span><br>O Caminho
+    </h2>
+
+    <p class="special-msg">
+      Por detrás de cada homem de sucesso existe uma força que o ancora,
+      que o inspira e que o faz querer ser sempre melhor.
+      <strong>Artur</strong>, que este amor que tens continue a ser o teu maior
+      combustível — porque quando o coração está em paz, nada é impossível.
+      Que a vida vos sorria juntos em cada capítulo que ainda está por escrever.
+    </p>
+
+    <div class="special-divider"></div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing reveal">
+    <div class="closing-left">
+      <h2 class="closing-headline">
+        Muitos
+        <span>Anos</span>
+        De Vida
+      </h2>
+      <p class="closing-msg">
+        Para o <strong>Artur Fernando Mabjeca</strong> — que este dia seja apenas o início
+        de um capítulo ainda mais extraordinário. Com todo o carinho e admiração,
+        a tua família e amigos celebram contigo.
+      </p>
+    </div>
+    <div class="closing-right">
+      <div class="closing-wishes">
+        <div class="closing-wish-line">
+          Saúde acima de tudo <span class="arrow">→</span>
+        </div>
+        <div class="closing-wish-line">
+          Amor que nunca acaba <span class="arrow">→</span>
+        </div>
+        <div class="closing-wish-line">
+          Carreira de sucesso <span class="arrow">→</span>
+        </div>
+        <div class="closing-wish-line">
+          Gargalhadas sem fim <span class="arrow">→</span>
+        </div>
+        <div class="closing-wish-line">
+          Aventuras inesquecíveis <span class="arrow">→</span>
+        </div>
+        <div class="closing-wish-line">
+          Paz no coração <span class="arrow">→</span>
+        </div>
+        <div class="closing-wish-line">
+          Sonhos que viram realidade <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-left">© 2026 · Edição Especial de Aniversário</span>
+    <span class="footer-center">♦ AFM ♦</span>
+    <span class="footer-right">Artur Fernando Mabjeca · 16 Mar</span>
+  </footer>
+
+  <script>
+    // ── Cursor ──
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('cur-ring');
+    let rx = 0, ry = 0, mx = 0, my = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+    });
+    setInterval(() => {
+      rx += (mx - rx) * .14; ry += (my - ry) * .14;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    }, 16);
+    document.querySelectorAll('a, button, .g-card, .wish-item, .closing-wish-line').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cur.style.width = '28px'; cur.style.height = '28px'; cur.style.background = 'var(--gold)';
+        ring.style.width = '56px'; ring.style.height = '56px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cur.style.width = '12px'; cur.style.height = '12px'; cur.style.background = 'var(--rust)';
+        ring.style.width = '36px'; ring.style.height = '36px';
+      });
+    });
+
+    // ── Gallery ──
+    // ====================================================
+    // 📸 FOTOS — coloca na pasta "fotos/" ao lado do index.html
+    // ====================================================
+    const FOTOS = [
+      "fotos/IMG-20260316-WA0011.jpg",
+      "fotos/IMG-20260316-WA0012.jpg",
+      "fotos/IMG-20260316-WA0013.jpg",
+      "fotos/IMG-20260316-WA0016.jpg",
+      "fotos/IMG-20260316-WA0017.jpg",
+      "fotos/IMG-20260316-WA0019.jpg",
+      "fotos/IMG-20260316-WA0020.jpg",
+      "fotos/IMG-20260316-WA0022.jpg",
+      "fotos/IMG-20260316-WA0023.jpg",
+      "fotos/IMG-20260316-WA0025.jpg",
+      "fotos/IMG-20260316-WA0028.jpg",
+      "fotos/IMG-20260316-WA0029.jpg",
+      "fotos/IMG-20260316-WA0033.jpg",
+      "fotos/IMG-20260316-WA0035.jpg",
+    ];
+    // ====================================================
+
+    // Layout pattern: tall, normal, normal, wide, normal, normal, tall...
+    const layouts = ['g-tall','','','g-wide','','g-tall','','','','g-wide','','','',''];
+    const grid = document.getElementById('gallery-grid');
+
+    FOTOS.forEach((src, i) => {
+      const card = document.createElement('div');
+      card.className = 'g-card ' + (layouts[i] || '');
+      card.innerHTML = `
+        <img src="${src}" alt="Foto ${i+1}" loading="lazy"/>
+        <div class="g-card-overlay"></div>
+        <span class="g-card-num">${String(i+1).padStart(2,'0')}</span>
+      `;
+      grid.appendChild(card);
+    });
+
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>
