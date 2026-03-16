@@ -180,7 +180,7 @@
       animation: fadeIn 1s .7s ease both;
     }
 
-    
+    .hero-name-block {}
     .hero-name-small {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
@@ -694,9 +694,30 @@
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { height: 50vw; border-right: none; }
-      .hero-left { border-right: none; padding: 48px 24px; }
+      /* Hero mobile */
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-left {
+        border-right: none;
+        border-bottom: 2px solid var(--ink);
+        padding: 40px 24px 36px;
+        order: 2;
+      }
+      .hero-right {
+        order: 1;
+        height: 70vw;
+        max-height: 400px;
+      }
+      .hero-tag { font-size: 0.55rem; letter-spacing: .2em; }
+      .hero-headline { padding: 24px 0; }
+      .hero-big { font-size: clamp(3.5rem, 18vw, 5.5rem); }
+      .hero-sub { font-size: 1rem; margin-top: 20px; max-width: 100%; }
+      .hero-bottom { margin-top: 28px; align-items: center; }
+      .hero-name-big { font-size: 1.3rem; }
+      .hero-number { font-size: 4rem; }
+
       .editorial { grid-template-columns: 1fr; }
       .editorial-main { border-right: none; padding: 48px 24px; }
       .body-copy { columns: 1; }
@@ -896,7 +917,7 @@
     <div class="special-frame">
       <div class="corner-tr"></div>
       <div class="corner-bl"></div>
-      <img src="fotos/IMG-20260316-WA0028.jpg" alt="Momento especial — Artur Fernando Mabjeca"/>
+      <img src="fotos/foto_especial.jpeg" alt="Momento especial — Artur Fernando Mabjeca"/>
     </div>
 
     <h2 class="special-headline">
@@ -1031,4 +1052,4 @@
     reveals.forEach(r => obs.observe(r));
   </script>
 </body>
-</html>
+</html
